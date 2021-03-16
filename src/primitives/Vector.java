@@ -20,6 +20,7 @@ public class Vector {
         this(new Point3D(x, y, z));
     }
 
+
     public Vector crossProduct(Vector v) {
         double u1 = _head._x._coord;
         double u2 = _head._y._coord;
