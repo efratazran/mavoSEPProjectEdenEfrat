@@ -40,5 +40,22 @@ public class Point3D {
         }
         return new Vector(head);
     }
+    public Point3D add(Vector vec){
+        Point3D point = new Point3D(_x.add(vec.get_head()._x), _y.add( vec.get_head()._y), _z.add( vec.get_head()._z));
+        return point;
+    }
+
+    public double distanceSquared(Point3D point){
+       return ((point._x._coord- _x._coord)*(point._x._coord- _x._coord)
+               +(point._y._coord- _y._coord)*(point._y._coord- _y._coord)+
+                (point._z._coord- _z._coord)*(point._z._coord- _z._coord));
+
+    }
+    public double distance(Point3D point){
+        return Math.sqrt(distanceSquared(point));
+    }
+
+
+
 
 }

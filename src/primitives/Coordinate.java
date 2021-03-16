@@ -26,6 +26,24 @@ public final class Coordinate {
         _coord = alignZero(coord);
     }
 
+    public double get_coord() {
+        return _coord;
+    }
+    public double add(double coord) {
+       return _coord+coord;
+    }
+
+    public double add(Coordinate coord) {
+        return _coord+coord._coord;
+    }
+    public double sub(double coord) {
+        return _coord-coord;
+    }
+    public double sub(Coordinate coord) {
+        return _coord-coord._coord;
+    }
+
+
     /*************** Admin *****************/
     @Override
     public boolean equals(Object obj) {
