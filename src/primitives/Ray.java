@@ -1,10 +1,12 @@
 package primitives;
 
 public class Ray {
+
+    /*** field ***/
     Point3D p0;
     Vector dir;
 
-    //constructors
+    //constructor that get point and vector
     public Ray(Point3D p0, Vector dir) {
         this.p0 = p0;
         this.dir = dir.normalized();
@@ -20,6 +22,6 @@ public class Ray {
 
     @Override
     public String toString() {
-        return "p0: "+ p0 + ", dir=" + dir ;
+        return "p0: "+ p0.toString() + ", dir=" + dir.toString();
     }
 }

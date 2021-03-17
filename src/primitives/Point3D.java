@@ -1,17 +1,20 @@
 package primitives;
 
 public class Point3D {
+
+    /*** field ***/
     final Coordinate _x;
     final Coordinate _y;
     final Coordinate _z;
     public final static Point3D ZERO=new Point3D(0,0,0);
 
-    //constructors
+    //constructor that get 3 Coordinate
     public Point3D(Coordinate x, Coordinate y, Coordinate z) {
         _x = x;
         _y = y;
         _z = z;
     }
+    //constructor that get 3 numbers
     public Point3D(double x, double y, double z) {
         this(new Coordinate(x),new Coordinate(y),new Coordinate(z));
     }
@@ -29,28 +32,31 @@ public class Point3D {
         return "("+_x +","+_y +","+_z +")";
     }
 
+    //return vector of sub between 2 points
     public Vector subtract(Point3D p) {
         Point3D head=new Point3D(
-                _x._coord -p._x._coord,
-                _y._coord -p._y._coord,
-                _z._coord -p._z._coord
+                _x.sub(p._x),
+                _y.sub(p._y),
+                _z.sub(p._z)
         );
         if (ZERO.equals(head)) {
             throw new IllegalArgumentException("Vector had cannot be Point(0,0,0)");
         }
         return new Vector(head);
     }
+    //return point of add of vector and point
     public Point3D add(Vector vec){
         Point3D point = new Point3D(_x.add(vec.get_head()._x), _y.add( vec.get_head()._y), _z.add( vec.get_head()._z));
         return point;
     }
-
+    //return distance between 2 points in pow 2
     public double distanceSquared(Point3D point){
        return ((point._x._coord- _x._coord)*(point._x._coord- _x._coord)
                +(point._y._coord- _y._coord)*(point._y._coord- _y._coord)+
                 (point._z._coord- _z._coord)*(point._z._coord- _z._coord));
 
     }
+    //return distance between 2 points
     public double distance(Point3D point){
         return Math.sqrt(distanceSquared(point));
     }
