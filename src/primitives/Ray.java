@@ -1,12 +1,20 @@
 package primitives;
-
+/**
+ * a ray class with a starting point
+ */
 public class Ray {
 
     /*** field ***/
-    Point3D p0;
-    Vector dir;
+    private final Point3D p0;
+    private final Vector dir;
+    /*** constructor ***/
 
-    //constructor that get point and vector
+
+    /**
+     * constructor that gets a point and a vector
+     * @param p0 point3D value
+     * @param dir vector value
+     */
     public Ray(Point3D p0, Vector dir) {
         this.p0 = p0;
         this.dir = dir.normalized();

@@ -25,17 +25,30 @@ public final class Coordinate {
         // if it too close to zero make it zero
         _coord = alignZero(coord);
     }
-
+    /**
+     * Coordinate value getter
+     *
+     * @return coordinate value
+     */
     public double get_coord() {
         return _coord;
     }
+    /**
+     * adds one point to another
+     * @param coord
+     * @return double
+     */
     public double add(double coord) {
        return _coord+coord;
     }
-
     public double add(Coordinate coord) {
         return _coord+coord._coord;
     }
+    /**
+     * subs one point to another
+     * @param coord
+     * @return double
+     */
     public double sub(double coord) {
         return _coord-coord;
     }
