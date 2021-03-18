@@ -2,39 +2,54 @@ package geometries;
 
 import primitives.Point3D;
 import primitives.Vector;
+
 /**
  * this is a plane class
  */
 public class Plane implements Geometry {
 
     /*** field ***/
-    Point3D _q0;
-    Vector _normal;
+    private final Point3D _q0;
+    private final Vector _normal;
 
     /*** constructors ***/
     /**
      * constructor that get 3 points of plane
+     *
      * @param p1 point3D value
      * @param p2 point3D value
      * @param p3 point3D value
      */
     public Plane(Point3D p1, Point3D p2, Point3D p3) {
-        _q0=p1;
-        _normal=null;
+        _q0 = p1;
+        _normal = null;
     }
 
     /**
      * constructor that get point and normal
-     * @param q0 point3D value
+     *
+     * @param q0     point3D value
      * @param normal Vector value
      */
-    public Plane(Point3D q0,Vector normal) {
-        this._q0=q0;
-        this._normal=normal;
+    public Plane(Point3D q0, Vector normal) {
+        this._q0 = q0;
+        this._normal = normal;
+    }
+
+    /**
+     * getter of the normal vector of the Plane
+     *
+     * @return
+     * @deprecated use the oveeriden version from Geometry
+     * {@link Plane#getNormal(Point3D)} with null parameter value
+     */
+    public Vector getNormal() {
+        return _normal;
     }
 
     /**
      * gets the normal of the plane
+     *
      * @param point point3D value
      * @return vector vector value
      */

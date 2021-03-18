@@ -25,6 +25,7 @@ public final class Coordinate {
         // if it too close to zero make it zero
         _coord = alignZero(coord);
     }
+
     /**
      * Coordinate value getter
      *
@@ -33,27 +34,33 @@ public final class Coordinate {
     public double get_coord() {
         return _coord;
     }
+
     /**
      * adds one point to another
+     *
      * @param coord
      * @return double
      */
     public double add(double coord) {
-       return _coord+coord;
+        return _coord + coord;
     }
+
     public double add(Coordinate coord) {
-        return _coord+coord._coord;
+        return _coord + coord._coord;
     }
+
     /**
      * subs one point to another
+     *
      * @param coord
      * @return double
      */
     public double sub(double coord) {
-        return _coord-coord;
+        return _coord - coord;
     }
+
     public double sub(Coordinate coord) {
-        return _coord-coord._coord;
+        return _coord - coord._coord;
     }
 
 
@@ -63,7 +70,7 @@ public final class Coordinate {
         if (this == obj) return true;
         if (obj == null) return false;
         if (!(obj instanceof Coordinate)) return false;
-        Coordinate other = (Coordinate)obj;
+        Coordinate other = (Coordinate) obj;
         return isZero(_coord - other._coord);
     }
 

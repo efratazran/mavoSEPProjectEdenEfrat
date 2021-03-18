@@ -1,4 +1,5 @@
 package primitives;
+
 /**
  * a ray class with a starting point
  */
@@ -12,13 +13,35 @@ public class Ray {
 
     /**
      * constructor that gets a point and a vector
-     * @param p0 point3D value
+     *
+     * @param p0  point3D value
      * @param dir vector value
      */
     public Ray(Point3D p0, Vector dir) {
         this.p0 = p0;
         this.dir = dir.normalized();
     }
+
+    /***getters ***/
+
+    /**
+     * getter for origin of the Ray
+     *
+     * @return p0
+     */
+    public Point3D getP0() {
+        return p0;
+    }
+
+    /**
+     * getter for direction vector of the Ray
+     *
+     * @return dir
+     */
+    public Vector getDir() {
+        return dir;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -30,6 +53,6 @@ public class Ray {
 
     @Override
     public String toString() {
-        return "p0: "+ p0.toString() + ", dir=" + dir.toString();
+        return "p0: " + p0.toString() + ", dir=" + dir.toString();
     }
 }
