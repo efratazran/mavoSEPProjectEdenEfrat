@@ -4,35 +4,55 @@ import primitives.Point3D;
 import primitives.Vector;
 import primitives.Ray;
 
+import java.io.PipedOutputStream;
+
+import static primitives.Util.isZero;
+
 /**
  * this is a tube class
  */
 public class Tube implements Geometry {
 
     /*** field ***/
-    double radius;
-    Ray axisRay;
+    double _radius;
+    Ray _axisRay;
 
     /********** getter **********/
 
     public double getRadius() {
-        return radius;
+        return _radius;
     }
 
     public Ray getAxisRay() {
-        return axisRay;
+        return _axisRay;
     }
 
     @Override
-    public Vector getNormal(Point3D point) {
-        return null;
+    public Vector getNormal(Point3D p) {
+       Point3D P0= _axisRay.getP0();
+       Vector v= _axisRay.getDir();
+       Vector P0_P= p.subtract(P0);
+
+       double t=v.dotProduct(P0_P);
+
+       ///TODO explain here what's happens
+        if(isZero(t)){
+            return  P0_P.normalize();
+        }
+
+        Point3D O=P0.add(v.scale(t));
+        if (O.equals(p)){
+            throw new IllegalArgumentException("point a cannot be on the tube's axis");
+        }
+        return  p.subtract(O).normalize();
+
     }
 
     @Override
     public String toString() {
         return "Tube{" +
-                "radius=" + radius +
-                ", axisRay=" + axisRay +
+                "radius=" + _radius +
+                ", axisRay=" + _axisRay +
                 '}';
     }
 }

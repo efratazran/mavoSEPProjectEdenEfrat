@@ -2,11 +2,12 @@ package primitives;
 
 import org.junit.jupiter.api.Test;
 
+import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.*;
 import static primitives.Util.isZero;
 
 class VectorTest {
-
+    Vector v = new Vector(1, 2, 3);
     @Test
     void testAdd() {
     }
@@ -56,15 +57,24 @@ class VectorTest {
 
     @Test
     void testLength() {
+        Vector vCopy = new Vector(v.get_head());
+        Vector vCopyNormalize = vCopy.normalize();
+        assertTrue(isZero(vCopyNormalize.length() - 1),"ERROR: normalize() result is not a unit vector");
     }
 
     @Test
     void testNormalize() {
+        Vector vCopy = new Vector(v.get_head());
+        Vector vCopyNormalize = vCopy.normalize();
+        assertEquals(vCopy, vCopyNormalize,"ERROR: normalize() function creates a new vector");
     }
 
     @Test
     void testNormalized() {
+        Vector u = v.normalized();
+        assertEquals(u, v, "ERROR: normalizated() function does not create a new vector");
     }
+
 
     @Test
     void testTestEquals() {

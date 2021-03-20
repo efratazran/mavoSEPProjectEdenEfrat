@@ -39,7 +39,7 @@ public class Ray {
      * @return dir
      */
     public Vector getDir() {
-        return dir;
+        return new Vector(dir.get_head());
     }
 
 
