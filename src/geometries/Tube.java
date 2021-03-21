@@ -44,7 +44,8 @@ public class Tube implements Geometry {
         if (O.equals(p)){
             throw new IllegalArgumentException("point a cannot be on the tube's axis");
         }
-        return  p.subtract(O).normalize();
+        Vector n=p.subtract(O);
+        return  n.normalize();
 
     }
 

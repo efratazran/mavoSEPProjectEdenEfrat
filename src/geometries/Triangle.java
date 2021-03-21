@@ -23,7 +23,7 @@ public class Triangle extends Polygon {
 
     @Override
     public String toString() {
-        return "points of Triangle:" + vertices + '\n' + "Plane" + plane;
+        return "points of Triangle:" + vertices + '\n' + "Plane" + _plane;
     }
 }
 

@@ -35,16 +35,16 @@ public class Plane implements Geometry {
      * constructor that get point and normal
      *
      * @param q0     point3D value
-     * @param normal Vector value
+     * @param normal Vector value,vector for the normal(will bwe normalized outomatical)
      */
     public Plane(Point3D q0, Vector normal) {
         this._q0 = q0;
-        this._normal = normal;
+        this._normal = normal.normalized();
     }
 
     /**
      * getter of the normal vector of the Plane
-     *
+     * getNormal implaematation
      * @return
      * @deprecated use the oveeriden version from Geometry
      * {@link Plane#getNormal(Point3D)} with null parameter value
@@ -55,12 +55,20 @@ public class Plane implements Geometry {
 
     /**
      * gets the normal of the plane
-     *
+     * getter of _Normal field
      * @param point point3D value
      * @return vector vector value
      */
     @Override
     public Vector getNormal(Point3D point) {
         return null;
+    }
+
+    /**
+     * getter Q0 field
+     * @return reference to the q0 point of the plane
+     */
+    public Point3D getQ0() {
+        return _q0;
     }
 }

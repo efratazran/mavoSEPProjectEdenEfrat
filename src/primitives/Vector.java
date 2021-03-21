@@ -45,7 +45,8 @@ public class Vector {
     }
 
     public Point3D get_head() {
-        return _head;
+
+        return new Point3D(_head._x._coord,_head._y._coord,_head._z._coord);
     }
 
     /**
