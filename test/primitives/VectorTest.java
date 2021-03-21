@@ -64,7 +64,7 @@ class VectorTest {
 
     @Test
     void testNormalize() {
-        Vector vCopy = new Vector(v.get_head());
+        Vector vCopy = new Vector(3.5,-5,10);
         Vector vCopyNormalize = vCopy.normalize();
         assertEquals(vCopy, vCopyNormalize,"ERROR: normalize() function creates a new vector");
     }

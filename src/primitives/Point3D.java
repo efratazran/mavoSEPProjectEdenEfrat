@@ -1,5 +1,5 @@
 package primitives;
-
+import primitives.Coordinate.*;
 /**
  * this is the class of a 3d point
  */

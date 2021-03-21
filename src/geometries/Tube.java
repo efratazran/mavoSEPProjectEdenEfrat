@@ -5,6 +5,7 @@ import primitives.Vector;
 import primitives.Ray;
 
 import java.io.PipedOutputStream;
+import java.util.List;
 
 import static primitives.Util.isZero;
 
@@ -55,5 +56,10 @@ public class Tube implements Geometry {
                 "radius=" + _radius +
                 ", axisRay=" + _axisRay +
                 '}';
+    }
+
+    @Override
+    public List<Point3D> findIntersections(Ray ray) {
+        return null;
     }
 }
