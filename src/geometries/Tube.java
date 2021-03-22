@@ -28,6 +28,11 @@ public class Tube implements Geometry {
         return _axisRay;
     }
 
+    /***
+     *
+     * @param p - Point in tube
+     * @return vector normal to the point
+     */
     @Override
     public Vector getNormal(Point3D p) {
        Point3D P0= _axisRay.getP0();
@@ -36,12 +41,13 @@ public class Tube implements Geometry {
 
        double t=v.dotProduct(P0_P);
 
-       ///TODO explain here what's happens
+        //if vector v and vector p0_p is vertical
         if(isZero(t)){
             return  P0_P.normalize();
         }
 
         Point3D O=P0.add(v.scale(t));
+        //if p is point of the ray
         if (O.equals(p)){
             throw new IllegalArgumentException("point a cannot be on the tube's axis");
         }

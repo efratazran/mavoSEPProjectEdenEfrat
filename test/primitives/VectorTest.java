@@ -9,15 +9,64 @@ import static primitives.Util.isZero;
 class VectorTest {
     Vector v = new Vector(1, 2, 3);
     @Test
+    /**
+     * test of add of 2 vectors
+     */
     void testAdd() {
+        // ============ Equivalence Partitions Tests ==============
+        //Test that the add vector works correct
+        Vector v1=new Vector(1,1,1);
+        Vector v2=new Vector(-1,-1,-1.5);
+        assertTrue(new Vector(0,0,-0.5).equals(v1.add(v2)),"the new vector not true");
+
+        // =============== Boundary Values Tests ==================
+        // test zero vector for add opposite vectors
+        try{
+            v1.add(new Vector(-1, -1, -1));
+            fail("the operator subtract didn't work");
+        }
+        catch(Exception e){
+        }
     }
 
     @Test
     void testSubtract() {
+        // ============ Equivalence Partitions Tests ==============
+        //Test that the subtract vector works correct
+        Vector v1=new Vector(1,1,1);
+        Vector v2=new Vector(1,1,1.5);
+        assertTrue(new Vector(0,0,-0.5).equals(v1.subtract(v2)),"the new vector not true");
+
+        // =============== Boundary Values Tests ==================
+        // test zero vector for subtract opposite vectors
+        try{
+            v1.subtract(new Vector(1, 1, 1));
+            fail("the operator subtract didn't work");
+        }
+        catch(Exception e){
+        }
+
     }
 
     @Test
     void testScale() {
+        // ============ Equivalence Partitions Tests ==============
+        //Test that the mult in scalar vector works correct
+        Vector v1=new Vector(1,1,1);
+        assertTrue(new Vector(4,4,4).equals(v1.scale(4)),"the new vector not true");
+
+        //=============== Boundary Values Tests ==================
+        // checks if when scaling by zero an exception is thrown
+        try
+        {
+            v1.scale(0);
+            fail("Didn't throw can not scale by zero Exception");
+        }
+        catch(IllegalArgumentException ex)
+        {
+            assertTrue(true);
+        }
+
     }
 
     /**
@@ -53,10 +102,14 @@ class VectorTest {
 
     @Test
     void testLengthSquared() {
+        // ============ Equivalence Partitions Tests ==============
+        assertEquals(v.lengthSquared(),14, 0.00001," wrong result length");
+
     }
 
     @Test
     void testLength() {
+        // ============ Equivalence Partitions Tests ==============
         Vector vCopy = new Vector(v.get_head());
         Vector vCopyNormalize = vCopy.normalize();
         assertTrue(isZero(vCopyNormalize.length() - 1),"ERROR: normalize() result is not a unit vector");
@@ -64,6 +117,7 @@ class VectorTest {
 
     @Test
     void testNormalize() {
+        // ============ Equivalence Partitions Tests ==============
         Vector vCopy = new Vector(3.5,-5,10);
         Vector vCopyNormalize = vCopy.normalize();
         assertEquals(vCopy, vCopyNormalize,"ERROR: normalize() function creates a new vector");
@@ -71,12 +125,28 @@ class VectorTest {
 
     @Test
     void testNormalized() {
+        // ============ Equivalence Partitions Tests ==============
         Vector u = v.normalized();
-        assertEquals(u, v, "ERROR: normalizated() function does not create a new vector");
+        assertNotEquals(u, v, "ERROR: normalizated() function does not create a new vector");
     }
-
 
     @Test
-    void testTestEquals() {
+    void testdotProduct() {
+
+        Vector v1 = new Vector(1, 2, 3);
+        Vector v2 = new Vector(-2, -4, -6);
+        Vector v3 = new Vector(0, 3, -2);
+        // ============ Equivalence Partitions Tests ==============
+        //Test that the dotProduct vector works correct
+        double v = v1.dotProduct(v3);
+        assertEquals(v, 0.0, 0.00001);
+        //Test that the dotProduct vector works correct
+        v = v1.dotProduct(v2) + 28;
+        assertEquals(v,0.0, 0.00001);
+
+        // not have Boundary Values Tests
+
     }
+
+
 }

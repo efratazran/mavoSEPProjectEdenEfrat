@@ -29,21 +29,6 @@ public class Vector {
 
     }
 
-    /**
-     * a constructor that gets 3 coordinates
-     *
-     * @param x coordinate value
-     * @param y coordinate value
-     * @param z coordinate value
-     */
-    public Vector(Coordinate x, Coordinate y, Coordinate z) {
-        Point3D head = new Point3D(x, y, z);
-        if (ZERO.equals(head)) {
-            throw new IllegalArgumentException("Vector had cannot be Point(0,0,0)");
-        }
-        this._head = head;
-    }
-
     public Point3D get_head() {
 
         return new Point3D(_head._x._coord,_head._y._coord,_head._z._coord);

@@ -13,20 +13,6 @@ public class Point3D {
 
 
     /**
-     * constructor that get 3 Coordinate
-     * this is the ctor that gets three different coordinates.
-     *
-     * @param x Coordinate value
-     * @param y Coordinate value
-     * @param z Coordinate value
-     */
-    public Point3D(Coordinate x, Coordinate y, Coordinate z) {
-        _x = x;
-        _y = y;
-        _z = z;
-    }
-
-    /**
      * constructor that get 3 numbers
      * this is a ctor that gets 3 different doubles.
      *
@@ -42,18 +28,17 @@ public class Point3D {
     }
 
 //    /*** getters ***/
-//    public double getX() {
-//        return _x._coord;
-//    }
-//
-//    public double getY() {
-//        return _y._coord;
-//    }
-//
-//    public double getZ() {
-//        return _z._coord;
-//    }
+    public Coordinate get_x() {
+        return _x;
+    }
 
+    public Coordinate get_y() {
+        return _y;
+    }
+
+    public Coordinate get_z() {
+        return _z;
+    }
 
     @Override
     public boolean equals(Object o) {
