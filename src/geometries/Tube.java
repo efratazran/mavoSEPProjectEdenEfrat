@@ -18,6 +18,11 @@ public class Tube implements Geometry {
     double _radius;
     Ray _axisRay;
 
+    public Tube(double _radius, Ray _axisRay) {
+        this._radius = _radius;
+        this._axisRay = _axisRay;
+    }
+
     /********** getter **********/
 
     public double getRadius() {

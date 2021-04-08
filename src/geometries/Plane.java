@@ -27,14 +27,26 @@ public class Plane implements Geometry {
      * @param p3 point3D value
      */
     public Plane(Point3D p1, Point3D p2, Point3D p3) {
-        _q0 = p1;
 
+        _q0 = p1;
+        //points mitlacdot
+        if(p1.equals(p2) || p2.equals(p3) || p1.equals(p3))
+        {
+            throw new IllegalArgumentException("wrong points to create plane");
+        }
+        // 3 points linear hanging
         Vector v1=p2.subtract(p1);
         Vector v2=p3.subtract(p1);
+        try
+        {
+          Vector n = v1.crossProduct(v2);
+          _normal = n.normalize();
+        }
+        catch(IllegalArgumentException e)
+        {
+            throw new IllegalArgumentException("wrong points to create plane");
+        }
 
-        Vector n=v1.crossProduct(v2);
-
-        _normal = n.normalize();
     }
 
     /**
@@ -66,7 +78,7 @@ public class Plane implements Geometry {
      * @return vector vector value
      */
     @Override
-    public Vector getNormal(Point3D point) { return null;
+    public Vector getNormal(Point3D point) { return getNormal();
     }
 
     /**

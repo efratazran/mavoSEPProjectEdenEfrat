@@ -1,9 +1,7 @@
 package geometries;
 
 import java.util.List;
-
 import primitives.*;
-
 import static primitives.Util.*;
 
 /**
@@ -20,7 +18,7 @@ public class Polygon implements Geometry {
     /**
      * Associated plane in which the polygon lays
      */
-    protected  final Plane _plane;
+    protected Plane plane;
 
     /**
      * Polygon constructor based on vertices list. The list must be ordered by edge
@@ -50,11 +48,11 @@ public class Polygon implements Geometry {
         // Generate the plane according to the first three vertices and associate the
         // polygon with this plane.
         // The plane holds the invariant normal (orthogonal unit) vector to the polygon
-        _plane = new Plane(vertices[0], vertices[1], vertices[2]);
+        plane = new Plane(vertices[0], vertices[1], vertices[2]);
         if (vertices.length == 3)
             return; // no need for more tests for a Triangle
 
-        Vector n = _plane.getNormal(null);
+        Vector n = plane.getNormal();
 
         // Subtracting any subsequent points will throw an IllegalArgumentException
         // because of Zero Vector if they are in the same point
@@ -85,12 +83,13 @@ public class Polygon implements Geometry {
 
     @Override
     public Vector getNormal(Point3D point) {
-        return _plane.getNormal(null);
+        return plane.getNormal();
     }
+
 
     @Override
     public List<Point3D> findIntersections(Ray ray) {
-        if(_plane.findIntersections(ray)==null)
+        if(plane.findIntersections(ray)==null)
             return null;
         //TODO
         return null;

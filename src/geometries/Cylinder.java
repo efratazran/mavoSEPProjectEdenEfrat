@@ -17,6 +17,11 @@ public class Cylinder extends Tube implements Geometry {
     /*** field ***/
     double _height;
 
+    public Cylinder(double _radius, Ray _axisRay, double _height) {
+        super(_radius, _axisRay);
+        this._height = _height;
+    }
+
     /***
      *
      * @param point

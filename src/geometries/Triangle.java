@@ -1,6 +1,7 @@
 package geometries;
 
 import primitives.Point3D;
+import primitives.Vector;
 
 /**
  * this is the class of a triangle.
@@ -21,9 +22,19 @@ public class Triangle extends Polygon {
         super(p1, p2, p3);
     }
 
+    /**
+     * get normal of a triangle
+     * @param point point3D value
+     * @return vector vector value
+     */
+    @Override
+    public Vector getNormal(Point3D point) {
+        return super.getNormal(point);
+    }
+
     @Override
     public String toString() {
-        return "points of Triangle:" + vertices + '\n' + "Plane" + _plane;
+        return "points of Triangle:" + vertices + '\n' + "Plane" + plane;
     }
 }
 
