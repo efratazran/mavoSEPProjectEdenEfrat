@@ -92,25 +92,38 @@ public class Plane implements Geometry {
 
     @Override
     public List<Point3D> findIntersections(Ray ray) {
-       Point3D p0=ray.getP0();
-       Vector v=ray.getDir();
+        Point3D P0 = ray.getP0();
+        Vector v = ray.getDir();
 
-       if(_q0.equals(p0))return null;
+        Vector n = _normal;
 
-       Vector p0_q0=_q0.subtract(p0);
-       Vector n=_normal;
+        if(_q0.equals(P0)){
+            return  null;
+        }
 
-       double mechane=alignZero(n.dotProduct(p0_q0));;
+        Vector P0_Q0 = _q0.subtract(P0);
 
-       if(isZero(mechane))
-           return null;
-       //mone
-       double nv= alignZero(n.dotProduct(v));
-       if(isZero(nv))
-           return null;
-       double t =alignZero(mechane/nv);
-       Point3D P=p0.add(v.scale(t));
+        double mechane = alignZero(n.dotProduct(P0_Q0));
 
-       return List.of(P);
+        if (isZero(mechane)){
+            return null;
+        }
+
+        //mone
+        double nv = alignZero(n.dotProduct(v));
+
+        // ray is lying in the plane axis
+        if(isZero(nv)){
+            return null;
+        }
+
+        double  t = alignZero(mechane / nv);
+
+        if (t <=0){
+            return  null;
+        }
+        Point3D P = ray.getPoint(t);
+
+        return List.of(P);
     }
 }

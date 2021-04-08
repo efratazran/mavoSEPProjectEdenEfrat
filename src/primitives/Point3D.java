@@ -27,7 +27,7 @@ public class Point3D {
         _z = new Coordinate(z);
     }
 
-//    /*** getters ***/
+   //    /*** getters ***/
     public Coordinate get_x() {
         return _x;
     }
@@ -39,6 +39,10 @@ public class Point3D {
     public Coordinate get_z() {
         return _z;
     }
+
+    public double getx(){return _x._coord;}
+    public double gety(){return _y._coord;}
+    public double getz(){return _z._coord;}
 
     @Override
     public boolean equals(Object o) {

@@ -1,5 +1,7 @@
 package primitives;
 
+import static primitives.Util.isZero;
+
 /**
  * a ray class with a starting point
  */
@@ -42,7 +44,12 @@ public class Ray {
         return new Vector(dir.get_head());
     }
 
-
+    public Point3D getPoint(double delta ){
+        if (isZero(delta)){
+            return  p0;
+        }
+        return p0.add(dir.scale(delta));
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
