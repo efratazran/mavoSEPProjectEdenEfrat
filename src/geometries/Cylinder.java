@@ -37,7 +37,7 @@ public class Cylinder extends Tube implements Geometry {
         {
             val = alignZero(point.subtract(o).dotProduct(v));
         } catch (IllegalArgumentException e)
-        { //casr that if point=0 the start point of ray
+        { //case that if point=0 the start point of ray
             return v;
         }
         // case that point exist in two base of cylinder

@@ -119,4 +119,5 @@ class SphereTest {
                 "Ray orthogonal to ray head -> O line");
 
     }
+
 }
