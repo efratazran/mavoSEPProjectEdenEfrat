@@ -5,6 +5,8 @@ Eden Lasri 315485987
 */
 
 import primitives.*;
+import renderer.ImageWriter;
+
 import static java.lang.System.out;
 import static primitives.Util.*;
 
@@ -22,6 +24,10 @@ public final class Main {
      * @param args irrelevant here
      */
     public static void main(String[] args) {
+
+
+
+        /*
 
         try { // test zero vector
             new Vector(0, 0, 0);
@@ -77,5 +83,7 @@ public final class Main {
             out.println("ERROR: Point - Point does not work correctly");
 
         out.println("If there were no any other outputs - all tests succeeded!");
+        */
+
     }
 }
