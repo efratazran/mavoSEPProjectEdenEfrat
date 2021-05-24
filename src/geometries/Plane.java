@@ -12,7 +12,7 @@ import static primitives.Util.isZero;
 /**
  * this is a plane class
  */
-public class Plane implements Geometry {
+public class Plane extends Geometry {
 
     /*** field ***/
     private final Point3D _q0;
@@ -89,9 +89,13 @@ public class Plane implements Geometry {
         return _q0;
     }
 
-
+    /**
+     * function to search points intersection
+     * @param ray
+     * @return lis of geopint
+     */
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
         Point3D P0 = ray.getP0();
         Vector v = ray.getDir();
 
@@ -124,6 +128,6 @@ public class Plane implements Geometry {
         }
         Point3D P = ray.getPoint(t);
 
-        return List.of(P);
+        return List.of(new GeoPoint(this,P));
     }
 }

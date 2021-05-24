@@ -4,11 +4,16 @@ Efrat Azran 206848640
 Eden Lasri 315485987
 */
 
+import geometries.Sphere;
+import geometries.Triangle;
+import geometries.intersectable;
 import primitives.*;
-import renderer.ImageWriter;
+
+import java.util.LinkedList;
+import java.util.List;
 
 import static java.lang.System.out;
-import static primitives.Util.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 /**
@@ -25,65 +30,25 @@ public final class Main {
      */
     public static void main(String[] args) {
 
+        Ray ray=new Ray(new Point3D(0,0,0),new Vector(1,1,1));
+        List<intersectable.GeoPoint> listPoints1=new LinkedList<>();
+        intersectable.GeoPoint gp1=new intersectable.GeoPoint(new Sphere(2d, new Point3D(2,2,3)),new Point3D(3.39,3.39,3.39));
+        intersectable.GeoPoint gp2=new intersectable.GeoPoint(new Sphere(2d, new Point3D(2,2,3)),new Point3D(1.3,1.3,1.3));
+        intersectable.GeoPoint gp3=new intersectable.GeoPoint(new Triangle(new Point3D(2,2,3),new Point3D(3,0,0),new Point3D(0,3,0)),new Point3D(1.0,1.0,1.0));
+        listPoints1.add(gp1);
+        listPoints1.add(gp2);
+        listPoints1.add(gp3);
+
+        // ============ Equivalence Partitions Tests ==============
+        //T01:A point
+        intersectable.GeoPoint gp4=ray.findGeoClosestPoint(listPoints1);
+        out.println(gp4.point);
+        //assertEquals(gp2,ray.findGeoClosestPoint(listPoints1),"A point in the middle of the list is closest the beginning of ray");
 
 
-        /*
-
-        try { // test zero vector
-            new Vector(0, 0, 0);
-            out.println("ERROR: zero vector does not throw an exception");
-        } catch (Exception e) { }
-
-        Vector v1 = new Vector(1, 2, 3);
-        Vector v2 = new Vector(-2, -4, -6);
-        Vector v3 = new Vector(0, 3, -2);
 
 
 
-        // test length..
-        if (!isZero(v1.lengthSquared() - 14))
-            out.println("ERROR: lengthSquared() wrong value");
-        if (!isZero(new Vector(0, 3, 4).length() - 5))
-            out.println("ERROR: length() wrong value");
-
-        // test Dot-Product
-        if (!isZero(v1.dotProduct(v3)))
-            out.println("ERROR: dotProduct() for orthogonal vectors is not zero");
-        if (!isZero(v1.dotProduct(v2) + 28))
-            out.println("ERROR: dotProduct() wrong value");
-
-        // test Cross-Product
-        try { // test zero vector
-            v1.crossProduct(v2);
-            out.println("ERROR: crossProduct() for parallel vectors does not throw an exception");
-        } catch (Exception e) {}
-        Vector vr = v1.crossProduct(v3);
-        if (!isZero(vr.length() - v1.length() * v3.length()))
-            out.println("ERROR: crossProduct() wrong result length");
-        if (!isZero(vr.dotProduct(v1)) || !isZero(vr.dotProduct(v3)))
-            out.println("ERROR: crossProduct() result is not orthogonal to its operands");
-
-        // test vector normalization vs vector length and cross-product
-        Vector v = new Vector(1, 2, 3);
-        Vector vCopy = new Vector(v.get_head());
-        Vector vCopyNormalize = vCopy.normalize();
-        if (vCopy != vCopyNormalize)
-            out.println("ERROR: normalize() function creates a new vector");
-        if (!isZero(vCopyNormalize.length() - 1))
-            out.println("ERROR: normalize() result is not a unit vector");
-        Vector u = v.normalized();
-        if (u == v)
-            out.println("ERROR: normalizated() function does not create a new vector");
-
-        // Test operations with points and vectors
-        Point3D p1 = new Point3D(1, 2, 3);
-        if (!Point3D.ZERO.equals(p1.add(new Vector(-1, -2, -3))))
-            out.println("ERROR: Point + Vector does not work correctly");
-        if (!new Vector(1, 1, 1).equals(new Point3D(2, 3, 4).subtract(p1)))
-            out.println("ERROR: Point - Point does not work correctly");
-
-        out.println("If there were no any other outputs - all tests succeeded!");
-        */
 
     }
 }

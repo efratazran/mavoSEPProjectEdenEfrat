@@ -29,7 +29,13 @@ public class Camera {
         _width=builder._width;
         _distance=builder._distance;
     }
-   /** setters **/
+
+    /**
+     *
+     * @param width
+     * @param height
+     * @return
+     */
     public Camera setViewPlaneSize(double width, double height){
         _width = width;
         _height =height;

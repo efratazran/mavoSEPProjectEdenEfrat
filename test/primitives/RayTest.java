@@ -1,6 +1,11 @@
 package primitives;
 
+
+import geometries.Sphere;
+import geometries.Triangle;
 import org.junit.jupiter.api.Test;
+import geometries.intersectable.GeoPoint;
+
 
 import java.util.LinkedList;
 import java.util.List;
@@ -53,4 +58,40 @@ class RayTest {
 
     }
 
+
+    @Test
+    void testFindGeoClosestPoint() {
+        Ray ray=new Ray(new Point3D(0,0,0),new Vector(1,1,1));
+        List<GeoPoint> listPoints1=new LinkedList<>();
+        GeoPoint gp1=new GeoPoint(new Sphere(2d, new Point3D(2,2,3)),new Point3D(3.39,3.39,3.39));
+        GeoPoint gp2=new GeoPoint(new Sphere(2d, new Point3D(2,2,3)),new Point3D(1.3,1.3,1.3));
+        GeoPoint gp3=new GeoPoint(new Triangle(new Point3D(2,2,3),new Point3D(3,0,0),new Point3D(0,3,0)),new Point3D(1.8,1.8,1.8));
+        listPoints1.add(gp1);
+        listPoints1.add(gp2);
+        listPoints1.add(gp3);
+
+        // ============ Equivalence Partitions Tests ==============
+        //T01:A point
+        assertEquals(gp2,ray.findGeoClosestPoint(listPoints1),"A point in the middle of the list is closest the beginning of ray");
+
+        // =============== Boundary Values Tests =================
+        //T11: empty list
+        listPoints1.clear();
+        assertNull(ray.findGeoClosestPoint(listPoints1) , "empty list");
+
+        //T12:first point
+        listPoints1.add(gp2);
+        listPoints1.add(gp1);
+        listPoints1.add(gp3);
+        assertEquals(gp2,ray.findGeoClosestPoint(listPoints1),"A point in the first of the list is closest the beginning of ray");
+
+        //T12:last point
+        listPoints1.clear();
+        listPoints1.add(gp1);
+        listPoints1.add(gp3);
+        listPoints1.add(gp2);
+        assertEquals(gp2,ray.findGeoClosestPoint(listPoints1),"A point in the last of the list is closest the beginning of ray");
+
+
+    }
 }

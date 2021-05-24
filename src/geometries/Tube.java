@@ -12,7 +12,7 @@ import static primitives.Util.isZero;
 /**
  * this is a tube class
  */
-public class Tube implements Geometry {
+public class Tube extends Geometry {
 
     /*** field ***/
     double _radius;
@@ -70,7 +70,7 @@ public class Tube implements Geometry {
     }
 
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
         return null;
     }
 }

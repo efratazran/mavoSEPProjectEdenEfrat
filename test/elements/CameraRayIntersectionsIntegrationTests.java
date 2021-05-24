@@ -57,19 +57,19 @@ public class CameraRayIntersectionsIntegrationTests {
                 .build();
 
         // TC01: Small Sphere 2 points
-        assertCountIntersections(cam1, new Sphere(new Point3D(0, 0, -3) ,1), 2);
+        assertCountIntersections(cam1, new Sphere(1, new Point3D(0, 0, -3)), 2);
 
         // TC02: Big Sphere 18 points
-        assertCountIntersections(cam2, new Sphere(new Point3D(0, 0, -2.5),2.5), 18);
+        assertCountIntersections(cam2, new Sphere(2.5, new Point3D(0, 0, -2.5)), 18);
 
         // TC03: Medium Sphere 10 points
-        assertCountIntersections(cam2, new Sphere( new Point3D(0, 0, -2),2), 10);
+        assertCountIntersections(cam2, new Sphere(2, new Point3D(0, 0, -2)), 10);
 
         // TC04: Inside Sphere 9 points
-        assertCountIntersections(cam2, new Sphere( new Point3D(0, 0, -1),4), 9);
+        assertCountIntersections(cam2, new Sphere(4, new Point3D(0, 0, -1)), 9);
 
         // TC05: Beyond Sphere 0 points
-        assertCountIntersections(cam1, new Sphere( new Point3D(0, 0, 1),0.5), 0);
+        assertCountIntersections(cam1, new Sphere(0.5, new Point3D(0, 0, 1)), 0);
     }
 
     /**

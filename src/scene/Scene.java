@@ -1,8 +1,12 @@
 package scene;
 
 import elements.AmbientLight;
+import elements.LightSource;
 import geometries.Geometries;
 import primitives.Color;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class Scene {
 
@@ -11,8 +15,9 @@ public class Scene {
 
     //according to Dan Zilberstein directives
     public Color background = Color.BLACK;
-    public AmbientLight ambientlight= new AmbientLight(new Color(192,192,192),1.d); ;
+    public AmbientLight ambientlight= new AmbientLight();
     public Geometries geometries = null;
+    public List<LightSource> lights=new LinkedList<LightSource>();
 
     /** constructor **/
     public Scene(String name) {
@@ -37,4 +42,8 @@ public class Scene {
         return  this;
     }
 
+    public Scene setLights(List<LightSource> lights) {
+        this.lights = lights;
+        return this;
+    }
 }

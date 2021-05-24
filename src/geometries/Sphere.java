@@ -8,13 +8,13 @@ import java.util.List;
 
 import static primitives.Util.alignZero;
 
-public class Sphere implements Geometry {
+public class Sphere extends Geometry {
 
     /*** field ***/
-    final Point3D _center;
-    final double _radius;
+    private final Point3D _center;
+    private final double _radius;
 
-    public Sphere(Point3D center, double radius) {
+    public Sphere(double radius, Point3D center) {
         _center = center;
         _radius = radius;
     }
@@ -27,19 +27,21 @@ public class Sphere implements Geometry {
 
 
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
         Point3D p0 = ray.getP0();
         Vector v = ray.getDir();
 
         if (p0.equals(_center))
-            return List.of(_center.add(v.scale(_radius)));
+            return List.of(new GeoPoint(this,_center.add(v.scale(_radius))));
 
         Vector u = _center.subtract(p0);
         double tm = alignZero(v.dotProduct(u));
         double d=alignZero(Math.sqrt(u.lengthSquared()-tm*tm));
 
         //no intersections the ray direction is above the spere
-        if(d>=_radius)return null;
+        if(d>=_radius){
+            return null;
+        }
 
         double th=alignZero(Math.sqrt(_radius*_radius-d*d));
         double t1=alignZero(tm-th);
@@ -49,17 +51,17 @@ public class Sphere implements Geometry {
         {
             Point3D p1=p0.add(v.scale(t1));
             Point3D p2=p0.add(v.scale(t2));
-            return List.of(p1,p2);
+            return List.of(new GeoPoint(this, p1),new GeoPoint(this,p2));
         }
         else if(t1>0)
         {
             Point3D p1=p0.add(v.scale(t1));
-            return List.of(p1);
+            return List.of(new GeoPoint(this ,p1));
         }
         else if(t2>0)
         {
             Point3D p1=p0.add(v.scale(t2));
-            return List.of(p1);
+            return List.of(new GeoPoint(this,p1));
         }
         return null;
     }

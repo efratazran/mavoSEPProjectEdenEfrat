@@ -1,5 +1,6 @@
 package renderer;
 
+import geometries.intersectable.GeoPoint;
 import primitives.Color;
 import primitives.Ray;
 import scene.Scene;

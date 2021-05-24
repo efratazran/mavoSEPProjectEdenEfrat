@@ -2,6 +2,7 @@ package primitives;
 
 import java.util.List;
 
+import geometries.intersectable.GeoPoint;
 import static primitives.Util.isZero;
 
 /**
@@ -48,6 +49,30 @@ public class Ray {
 
         return  result;
     }
+
+    /**
+     *
+     * @param pointsList
+     * @return
+     */
+    public GeoPoint findGeoClosestPoint(List<GeoPoint> pointsList) {
+        if (pointsList.size() == 0) {
+            return null;
+        }
+
+        GeoPoint max = pointsList.get(0);
+        for (GeoPoint geopoint : pointsList) {
+            if (geopoint.point.distance(p0) < max.point.distance(p0)) {
+                max = geopoint;
+            }
+        }
+        return max;
+    }
+
+
+
+
+
 
     /***getters ***/
 

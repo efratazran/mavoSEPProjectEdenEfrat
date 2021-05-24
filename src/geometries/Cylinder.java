@@ -12,7 +12,7 @@ import static primitives.Util.isZero;
 /**
  * this is the class for a cylinder shape.
  */
-public class Cylinder extends Tube implements Geometry {
+public class Cylinder extends Tube  {
 
     /*** field ***/
     double _height;
@@ -33,11 +33,9 @@ public class Cylinder extends Tube implements Geometry {
         Point3D o = _axisRay.getP0();
 
         double val;
-        try
-        {
+        try {
             val = alignZero(point.subtract(o).dotProduct(v));
-        } catch (IllegalArgumentException e)
-        { //case that if point=0 the start point of ray
+        } catch (IllegalArgumentException e) { //case that if point=0 the start point of ray
             return v;
         }
         // case that point exist in two base of cylinder
@@ -49,10 +47,4 @@ public class Cylinder extends Tube implements Geometry {
         return point.subtract(o).normalize();
     }
 
-
-
-    @Override
-    public List<Point3D> findIntersections(Ray ray) {
-        return null;
-    }
 }
