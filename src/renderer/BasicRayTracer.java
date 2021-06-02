@@ -11,6 +11,40 @@ import static primitives.Util.alignZero;
 
 public class BasicRayTracer extends RayTracerBase {
 
+    private static final double DELTA = 0.1;
+
+
+    private boolean unshaded(Vector l, Vector n, GeoPoint gp) {
+
+        return true;
+    }
+
+    /**
+     * checks if a geometry is shaded
+     * @param light lightSource value
+     * @param l vector value
+     * @param n vector value
+     * @param gp geoPoint value
+     * @return boolean value
+     */
+    private boolean unshaded(LightSource light, Vector l, Vector n, GeoPoint gp)
+    {
+        Vector lightDirection = l.scale(-1); // from point to light source
+        Vector delta = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : -DELTA);
+        Point3D point = gp.point.add(delta);
+        Ray lightRay = new Ray(point, lightDirection);
+        List<GeoPoint> intersections = (_scene.geometries.findGeoIntersections(lightRay));
+
+        if (intersections == null) return true;
+        double lightDistance = light.getDistance(gp.point);
+        for (GeoPoint gp_ : intersections) {
+            if (alignZero(gp_.point.distance(gp.point) - lightDistance) <= 0)
+                return false;
+        }
+        return true;
+
+    }
+
     public BasicRayTracer(Scene scene) {
         super(scene);
     }
@@ -48,9 +82,11 @@ public class BasicRayTracer extends RayTracerBase {
             Vector l = lightSource.getL(intersection.point);
             double nl = alignZero(n.dotProduct(l));
             if (nl * nv > 0) { // sign(nl) == sing(nv)
-                Color lightIntensity = lightSource.getIntensity(intersection.point);
-                color = color.add(calcDiffusive(kd, l, n, lightIntensity),
-                        calcSpecular(ks, l, n, v, nShininess, lightIntensity));
+                if (unshaded(lightSource, l, n, intersection)) {
+                    Color lightIntensity = lightSource.getIntensity(intersection.point);
+                    color = color.add(calcDiffusive(kd, l, n, lightIntensity),
+                            calcSpecular(ks, l, n, v, nShininess, lightIntensity));
+                }
             }
         }
         return color;
