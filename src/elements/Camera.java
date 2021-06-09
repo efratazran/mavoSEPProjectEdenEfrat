@@ -6,6 +6,9 @@ import primitives.Vector;
 
 import static primitives.Util.isZero;
 
+/**
+ * Camera class
+ */
 public class Camera {
 
     /*** field ***/
@@ -14,12 +17,17 @@ public class Camera {
     private final Vector _vUp;
     private final Vector _vRight;
 
-    //view plane parameters
+    /**
+     *  view plane parameters
+     */
     private double _height;
     private double _width;
     private double _distance;
 
-    //constructor
+    /**
+     * constructor
+     * @param builder
+     */
     private Camera(Builder builder) {
         _p0=builder._p0;
         _vTo=builder._vTo;
@@ -31,7 +39,7 @@ public class Camera {
     }
 
     /**
-     *
+     * setters of size of view plane
      * @param width
      * @param height
      * @return
@@ -47,6 +55,14 @@ public class Camera {
         return this;
     }
 
+    /**
+     * constructing a ray through a pixel
+     * @param nX int value
+     * @param nY int value
+     * @param j int value
+     * @param i int value
+     * @return Ray value
+     */
     public Ray constructRayThroughPixel(int nX, int nY, int j, int i){
         // the point of view plane
         Point3D Pc=_p0.add(_vTo.scale(_distance));
@@ -69,7 +85,9 @@ public class Camera {
         Vector Vij=pIJ.subtract(_p0);
         return new Ray(_p0,Vij);
     }
-    /** getters **/
+     /**
+     * getters
+     * **/
     public Point3D getP0() {
         return _p0;
     }
@@ -97,6 +115,12 @@ public class Camera {
         private double _width=1;
         private double _distance=1;
 
+        /**
+         * format builder to create camera
+         * @param p0 point value
+         * @param vTo vector value
+         * @param vUp vector value
+         */
         public Builder(Point3D p0, Vector vTo, Vector vUp) {
             _p0 = p0;
 

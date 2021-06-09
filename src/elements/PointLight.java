@@ -4,6 +4,9 @@ import primitives.Color;
 import primitives.Point3D;
 import primitives.Vector;
 
+/**
+ * class point light
+ */
 public class PointLight extends Light implements LightSource {
 
     /**
@@ -14,10 +17,11 @@ public class PointLight extends Light implements LightSource {
     private double kL = 0;
     private double kQ = 0;
 
+
     /**
-     * constructor of Light
-     *
-     * @param intensity get a color
+     * constructor that gets a color, point3D
+     * @param intensity color
+     * @param position point
      */
     public PointLight(Color intensity, Point3D position) {
         super(intensity);
@@ -26,7 +30,7 @@ public class PointLight extends Light implements LightSource {
 
 
     /**
-     * setters
+     * setters in format builder
      */
     public PointLight setkC(double kC) {
         this.kC = kC;
@@ -52,7 +56,6 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * returns the intensity in a given point
-     *
      * @param lightedP the lighted point
      * @return color value in the given point
      */
@@ -65,7 +68,6 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * return the vector direction to a point
-     *
      * @param lightedP the lighted point
      * @return vector value
      */
@@ -78,6 +80,11 @@ public class PointLight extends Light implements LightSource {
         }
     }
 
+    /**
+     * returns the distance between the given point to the light source
+     * @param point point3D value
+     * @return double value distance light
+     */
     @Override
     public double getDistance(Point3D point) {
         return _position.distance(point);

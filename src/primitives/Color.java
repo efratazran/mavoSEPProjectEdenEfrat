@@ -34,7 +34,6 @@ public class Color {
     /**
      * Constructor to generate a color according to RGB components Each component in
      * range 0..255 (for printed white color) or more [for lights]
-     *
      * @param r Red component
      * @param g Green component
      * @param b Blue component
@@ -49,7 +48,6 @@ public class Color {
 
     /**
      * Copy constructor for Color
-     *
      * @param other the source color
      */
     public Color(Color other) {
@@ -60,7 +58,6 @@ public class Color {
 
     /**
      * Constructor on base of java.awt.Color object
-     *
      * @param other java.awt.Color's source object
      */
     public Color(java.awt.Color other) {

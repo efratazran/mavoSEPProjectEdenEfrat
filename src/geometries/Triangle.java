@@ -7,11 +7,9 @@ import primitives.Vector;
 import java.util.List;
 
 /**
- * this is the class of a triangle.
+ *  class triangle.
  */
 public class Triangle extends Polygon {
-
-    /*** constructor ***/
 
 
     /**
@@ -35,6 +33,11 @@ public class Triangle extends Polygon {
         return super.getNormal(point);
     }
 
+    /**
+     * finds intersections of the triangle
+     * @param ray ray value
+     * @return a list of intersection points
+     */
      @Override
     public List<GeoPoint> findGeoIntersections(Ray ray) {
         return super.findGeoIntersections(ray);

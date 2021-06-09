@@ -2,6 +2,9 @@ package elements;
 
 import primitives.Color;
 
+/**
+ * abstract class Light
+ */
 abstract class Light {
     /**
      * field

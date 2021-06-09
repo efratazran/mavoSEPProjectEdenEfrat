@@ -4,6 +4,9 @@ import primitives.Color;
 import primitives.Point3D;
 import primitives.Vector;
 
+/**
+ * class spotlight
+ */
 public class SpotLight extends PointLight {
 
     /**
@@ -14,8 +17,7 @@ public class SpotLight extends PointLight {
 
     /**
      * constructor spotlight
-     *
-     * @param intensity get a color, kC,kL,kQ ,Vector direction
+     * @param intensity get a color, Vector direction
      */
     public SpotLight(Color intensity, Point3D position, Vector direction) {
         super(intensity, position);
@@ -24,7 +26,6 @@ public class SpotLight extends PointLight {
 
     /**
      * returns the intensity in a given point
-     *
      * @param p the lighted point
      * @return color value in the given point
      */
@@ -37,6 +38,12 @@ public class SpotLight extends PointLight {
 
     }
 
+
+    /**
+     * returns the distance between the given point to the light source
+     * @param point point3D value
+     * @return double value distance light
+     */
     @Override
     public double getDistance(Point3D point) {
         return super.getDistance(point);

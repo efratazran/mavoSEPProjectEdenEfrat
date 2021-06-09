@@ -5,7 +5,9 @@ import primitives.Coordinate.*;
  */
 public class Point3D {
 
-    /*** field ***/
+    /***
+     * field
+     * ***/
     final Coordinate _x;
     final Coordinate _y;
     final Coordinate _z;
@@ -27,19 +29,18 @@ public class Point3D {
         _z = new Coordinate(z);
     }
 
-   //    /*** getters ***/
+    /***
+    * getters
+    * ***/
     public Coordinate get_x() {
         return _x;
     }
-
     public Coordinate get_y() {
         return _y;
     }
-
     public Coordinate get_z() {
         return _z;
     }
-
     public double getx(){return _x._coord;}
     public double gety(){return _y._coord;}
     public double getz(){return _z._coord;}
@@ -60,7 +61,6 @@ public class Point3D {
 
     /**
      * subtraction of two points.
-     *
      * @param p point3D value
      * @return vector vector value
      */
@@ -78,7 +78,6 @@ public class Point3D {
 
     /**
      * addition of two points
-     *
      * @param vec vector value
      * @return Point point3D value,return point of add of vector and point
      */

@@ -8,21 +8,36 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Geometries implements intersectable {
-
-
+    /**
+     * field
+     */
     private List<intersectable> _intersectables = new LinkedList<>();
-
+    /*** getters ***/
     public List<intersectable> get_intersectables() {
         return _intersectables;
     }
 
+    /**
+     * ctor that gets unlimited amount of geometries
+     * @param geos Intersectable geometries
+     */
     public Geometries(intersectable... geos) {
         add(geos);
     }
 
+    /**
+     * adds the geometries to the geometries list
+     * @param geos Intersectable geometries
+     */
     public void add(intersectable... geos) {
         Collections.addAll(_intersectables, geos);
     }
+
+    /**
+     * finds intersections of the geometries
+     * @param ray ray value
+     * @return a list of intersection points
+     */
 
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray) {

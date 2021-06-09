@@ -10,18 +10,18 @@ import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
 /**
- * this is a plane class
+ * plane class
  */
 public class Plane extends Geometry {
 
-    /*** field ***/
+    /***
+     *  field
+     *  ***/
     private final Point3D _q0;
     private final Vector _normal;
 
-    /*** constructors ***/
-    /**
+    /*** constructors
      * constructor that get 3 points of plane
-     *
      * @param p1 point3D value
      * @param p2 point3D value
      * @param p3 point3D value
@@ -51,8 +51,7 @@ public class Plane extends Geometry {
 
     /**
      * constructor that get point and normal
-     *
-     * @param q0     point3D value
+     * @param q0 point3D value
      * @param normal Vector value,vector for the normal(will bwe normalized outomatical)
      */
     public Plane(Point3D q0, Vector normal) {

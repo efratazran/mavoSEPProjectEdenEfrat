@@ -10,15 +10,15 @@ import static primitives.Util.isZero;
  */
 public class Ray {
 
-    /*** field ***/
+     /***
+     *  field
+     *  ***/
     private final Point3D p0;
     private final Vector dir;
-    /*** constructor ***/
+    private static final double DELTA = 0.1;
 
-
-    /**
+        /**
      * constructor that gets a point and a vector
-     *
      * @param p0  point3D value
      * @param dir vector value
      */
@@ -26,6 +26,20 @@ public class Ray {
         this.p0 = p0;
         this.dir = dir.normalized();
     }
+
+    /**
+     * constructor that get 3 paramters: point,direction,normal
+     * @param p0 point
+     * @param dir direction vector
+     * @param n normal vector
+     */
+    public Ray(Point3D p0, Vector dir, Vector n) {
+
+        this.p0=p0.add(n.scale(n.dotProduct(dir)>0 ? DELTA:-DELTA));
+        this.dir = dir.normalized();
+    }
+
+
     /**
      * find the closest Point to Ray origin
      * @param pointsList intersections point List
@@ -51,12 +65,12 @@ public class Ray {
     }
 
     /**
-     *
-     * @param pointsList
-     * @return
+     *find the closest Point to Ray origin
+     * @param pointsList intersections point List
+     * @return  closest point
      */
     public GeoPoint findGeoClosestPoint(List<GeoPoint> pointsList) {
-        if (pointsList.size() == 0) {
+        if (pointsList==null) {
             return null;
         }
 
@@ -69,12 +83,6 @@ public class Ray {
         return max;
     }
 
-
-
-
-
-
-    /***getters ***/
 
     /**
      * getter for origin of the Ray
@@ -92,6 +100,11 @@ public class Ray {
         return new Vector(dir.get_head());
     }
 
+    /**
+     * returns the intersections point
+     * @param delta double value
+     * @return Point point3D value
+     */
     public Point3D getPoint(double delta ){
         if (isZero(delta)){
             return  p0;

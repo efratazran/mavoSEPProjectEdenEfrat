@@ -7,13 +7,19 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+/**
+ * interface for interctions points
+ */
 public interface intersectable {
 
-     public static class GeoPoint {
+     class GeoPoint {
+          /**
+           * field
+           */
           public Geometry geometry;
           public Point3D point;
 
-          /**
+          /**constructor
            * @param geometry
            * @param point
            */
@@ -39,6 +45,12 @@ public interface intersectable {
                   .map(gp -> gp.point)
                   .collect(Collectors.toList());
      }
+
+     /**
+      * finds intersection points of a ray and a geometry
+      * @param ray ray value
+      * @return list of geoPoints
+      */
      List<GeoPoint> findGeoIntersections(Ray ray);
 
 }

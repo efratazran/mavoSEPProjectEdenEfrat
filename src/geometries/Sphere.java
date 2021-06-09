@@ -8,17 +8,32 @@ import java.util.List;
 
 import static primitives.Util.alignZero;
 
+/**
+ * sphere class
+ */
 public class Sphere extends Geometry {
 
-    /*** field ***/
+    /***
+     *  field
+     **/
     private final Point3D _center;
     private final double _radius;
 
+    /**
+     * constructor
+     * @param radius double
+     * @param center point
+     */
     public Sphere(double radius, Point3D center) {
         _center = center;
         _radius = radius;
     }
 
+    /**
+     * calculates the normal to a given point
+     * @param point point3D value
+     * @return vector vector value
+     */
     @Override
     public Vector getNormal(Point3D point) {
         Vector p0_p = point.subtract(_center);
@@ -26,6 +41,11 @@ public class Sphere extends Geometry {
     }
 
 
+    /**
+     * finds intersections of the sphere
+     * @param ray ray value
+     * @return a list of intersection points
+     */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray) {
         Point3D p0 = ray.getP0();

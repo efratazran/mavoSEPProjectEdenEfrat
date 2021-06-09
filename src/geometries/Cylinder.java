@@ -14,7 +14,9 @@ import static primitives.Util.isZero;
  */
 public class Cylinder extends Tube  {
 
-    /*** field ***/
+    /***
+     * field
+     * ***/
     double _height;
 
     public Cylinder(double _radius, Ray _axisRay, double _height) {

@@ -14,10 +14,17 @@ import static primitives.Util.isZero;
  */
 public class Tube extends Geometry {
 
-    /*** field ***/
+    /***
+     * field
+     * ***/
     double _radius;
     Ray _axisRay;
 
+    /**
+     * constructor that gets a radius and ray
+     * @param _radius double value
+     * @param _axisRay ray value
+     */
     public Tube(double _radius, Ray _axisRay) {
         this._radius = _radius;
         this._axisRay = _axisRay;
@@ -34,7 +41,7 @@ public class Tube extends Geometry {
     }
 
     /***
-     *
+     * calculates the normal to a given point
      * @param p - Point in tube
      * @return vector normal to the point
      */
@@ -69,6 +76,11 @@ public class Tube extends Geometry {
                 '}';
     }
 
+    /**
+     * finds the tubes intersections
+     * @param ray ray value
+     * @return a list of intersection points
+     */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray) {
         return null;

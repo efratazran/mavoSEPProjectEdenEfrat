@@ -131,7 +131,6 @@ public class Vector {
 
     /**
      * calculates the length of the vector
-     *
      * @return double value
      */
     public double length() {
@@ -161,15 +160,10 @@ public class Vector {
         }
         _head = newPoint;
         return this;
-
-        //Vector newvec = scale(1 / length());
-        //  _head = newvec._head;
-        //  return this;
     }
 
     /**
      * normalized vector of this vector
-     *
      * @return new vector vector value
      */
     public Vector normalized() {
