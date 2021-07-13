@@ -7,7 +7,9 @@ import primitives.Color;
 
 import java.util.LinkedList;
 import java.util.List;
-
+/*
+class acene
+ */
 public class Scene {
 
     /** field **/
@@ -19,14 +21,15 @@ public class Scene {
     public Geometries geometries = null;
     public List<LightSource> lights=new LinkedList<LightSource>();
 
-    /** constructor **/
+    /**
+     * constructor
+     **/
     public Scene(String name) {
         _name = name;
         geometries= new Geometries();
     }
 
-    //chaining set methods (this NOT a builder pattern)
-
+    //set builder pattern
     public Scene setBackground(Color background) {
         this.background = background;
         return  this;

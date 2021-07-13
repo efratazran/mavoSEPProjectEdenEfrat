@@ -39,7 +39,7 @@ public class ShadowTests {
                 setImageWriter(new ImageWriter("shadowSphereTriangleInitial", 400, 400)) //
                 .setCamera(camera) //
                 .setRayTracer(new BasicRayTracer(scene));
-        render.renderImage();
+        render.renderImage(0);
         render.writeToImage();
     }
 
@@ -68,7 +68,7 @@ public class ShadowTests {
                 .setImageWriter(new ImageWriter("shadowTrianglesSphere", 600, 600)) //
                 .setCamera(camera) //
                 .setRayTracer(new BasicRayTracer(scene));
-        render.renderImage();
+        render.renderImage(0);
         render.writeToImage();
     }
 

@@ -17,7 +17,6 @@ public class Point3D {
     /**
      * constructor that get 3 numbers
      * this is a ctor that gets 3 different doubles.
-     *
      * @param x double value
      * @param y double value
      * @param z double value
@@ -87,8 +86,7 @@ public class Point3D {
     }
 
     /**
-     * istance between 2 points in pow 2
-     *
+     * distance between 2 points in pow 2
      * @param point point3D value
      * @return distance in double value
      */
@@ -101,7 +99,6 @@ public class Point3D {
 
     /**
      * calculates distance between two points
-     *
      * @param point point3D value
      * @return distance in double value
      */

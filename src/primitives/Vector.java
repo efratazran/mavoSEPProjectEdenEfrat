@@ -14,7 +14,6 @@ public class Vector {
 
     /**
      * constructor that get 3 numbers
-     *
      * @param x double value
      * @param y double value
      * @param z double value
@@ -28,15 +27,8 @@ public class Vector {
         this._head = head;
 
     }
-
-    public Point3D get_head() {
-
-        return new Point3D(_head._x._coord,_head._y._coord,_head._z._coord);
-    }
-
     /**
      * constructor that get point and return the vector from (0,0,0) to the point
-     *
      * @param head point3D value
      */
     public Vector(Point3D head) {
@@ -46,10 +38,16 @@ public class Vector {
         this._head = head;
     }
 
+    /**
+     * getter
+     */
+    public Point3D get_head() {
+
+        return new Point3D(_head._x._coord,_head._y._coord,_head._z._coord);
+    }
 
     /**
      * add between 2 vectors
-     *
      * @param vec vector value
      * @return vector vector value
      */
@@ -61,7 +59,6 @@ public class Vector {
 
     /**
      * subtraction of two vectors
-     *
      * @param vec vector value
      * @return vector vector value
      */
@@ -73,7 +70,6 @@ public class Vector {
 
     /**
      * multiplies a scalar with a vector
-     *
      * @param scalar double value
      * @return vector vector value
      */
@@ -84,8 +80,7 @@ public class Vector {
     }
 
     /**
-     * multiplies vectors,with a vector result.
-     *
+     * multiplies vectors, with a vector result.
      * @param v vector value
      * @return vector vector value
      */
@@ -107,7 +102,6 @@ public class Vector {
 
     /**
      * multiplie vectors, with a number result
-     *
      * @param vec vector value
      * @return double value
      */
@@ -120,7 +114,6 @@ public class Vector {
 
     /**
      * calculates the length of vector in pow 2
-     *
      * @return double value
      */
     public double lengthSquared() {

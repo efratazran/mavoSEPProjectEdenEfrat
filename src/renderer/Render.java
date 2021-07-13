@@ -7,14 +7,17 @@ import scene.Scene;
 
 import java.util.MissingResourceException;
 
+/**
+ * render class
+ */
 public class Render {
     /*  field  */
-    ImageWriter _imageWriter = null;
-    Camera _camera = null;
-    RayTracerBase _rayTracerBase = null;
+    public ImageWriter _imageWriter = null;
+    public Camera _camera = null;
+    public RayTracerBase _rayTracerBase = null;
 
      /**
-     * seters
+     * seters format builder
      * */
     public Render setImageWriter(ImageWriter imageWriter) {
         _imageWriter = imageWriter;
@@ -31,7 +34,11 @@ public class Render {
         return this;
     }
 
-    public void renderImage() {
+    /**
+     * * This function create the buffer pf pixels and check that have a camera,imagewriter
+     * @param alfa
+     */
+    public void renderImage(double alfa) {
         try {
             if (_imageWriter == null) {
                 throw new MissingResourceException("missing resource", ImageWriter.class.getName(), "");
@@ -49,7 +56,7 @@ public class Render {
             for (int i = 0; i < nY; i++) {
                 for (int j = 0; j < nX; j++) {
                     Ray ray = _camera.constructRayThroughPixel(nX, nY, j, i);
-                    Color pixelColor = _rayTracerBase.traceRay(ray);
+                    Color pixelColor = _rayTracerBase.traceRay(ray,alfa);
                     _imageWriter.writePixel(j, i, pixelColor);
                 }
             }
@@ -60,7 +67,10 @@ public class Render {
         }
     }
 
-
+    /**
+     * Printing the grid with a fixed interval between lines
+     * @param interval The interval between the lines.
+     */
     public void printGrid(int interval, Color color) {
         int nX = _imageWriter.getNx();
         int nY = _imageWriter.getNy();
@@ -73,6 +83,9 @@ public class Render {
         }
     }
 
+    /**
+     * writes to an image
+     */
     public void writeToImage() {
         if (_imageWriter == null) {
             throw new MissingResourceException("missing resource", ImageWriter.class.getName(), "");
